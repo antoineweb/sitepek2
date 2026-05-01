@@ -1,0 +1,281 @@
+:root {
+  --bg: #f4f0e8;
+  --surface: rgba(255, 255, 255, 0.58);
+  --surface-strong: rgba(255, 255, 255, 0.74);
+  --text: #181614;
+  --muted: #6e675f;
+  --border: rgba(24, 22, 20, 0.12);
+  --accent: #22201d;
+  --shadow: 0 20px 60px rgba(24, 22, 20, 0.08);
+  --radius: 24px;
+  --max-width: 1240px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.85), transparent 34%),
+    linear-gradient(180deg, #f7f4ee 0%, var(--bg) 100%);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-shell {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 42px;
+}
+
+.brand,
+.eyebrow,
+.card-kicker,
+.note-label {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.topbar-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.topbar a,
+.contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar a:hover,
+.contact a:hover {
+  opacity: 0.68;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-grid,
+.intro-grid,
+.gallery-grid,
+.contact-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.hero-grid {
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+}
+
+.hero-copy h1,
+.section-heading h2,
+blockquote {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  line-height: 0.96;
+  margin: 0;
+}
+
+.hero-copy h1 {
+  font-size: clamp(4rem, 10vw, 8rem);
+  margin-bottom: 18px;
+}
+
+.lead {
+  font-size: 1.08rem;
+  color: var(--muted);
+  max-width: 32rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #f9f6f1;
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hero-image,
+.gallery-card,
+.text-card,
+.note-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.hero-image {
+  aspect-ratio: 4 / 5;
+}
+
+.section {
+  padding: 88px 0 0;
+}
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2.4rem, 4vw, 4.6rem);
+}
+
+.intro-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: start;
+}
+
+.intro p,
+.text-card p,
+.contact p,
+.note-card p,
+figcaption {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.note-card,
+.text-card {
+  padding: 24px;
+}
+
+.note-card span {
+  color: var(--text);
+}
+
+.gallery-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: stretch;
+}
+
+.gallery-card.large {
+  min-height: 640px;
+}
+
+.gallery-card figcaption {
+  padding: 18px 20px 22px;
+  background: var(--surface-strong);
+}
+
+.stack {
+  display: grid;
+  gap: 20px;
+}
+
+.manifesto {
+  padding-top: 96px;
+}
+
+blockquote {
+  max-width: 12ch;
+  font-size: clamp(2.7rem, 5vw, 5.8rem);
+}
+
+.contact-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-bottom: 24px;
+}
+
+@media (max-width: 920px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-grid,
+  .intro-grid,
+  .gallery-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    max-width: 8ch;
+  }
+
+  .gallery-card.large {
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(calc(100% - 20px), var(--max-width));
+    padding-top: 18px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 28px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+
+  .section {
+    padding-top: 68px;
+  }
+
+  .section-heading h2,
+  blockquote {
+    line-height: 1.02;
+  }
+}
