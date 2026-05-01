@@ -587,7 +587,190 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
 }
 
 /* =========================================================
-   DELVAUX (§ 03)
+   HANKAR (§ 03)
+   ========================================================= */
+.hankar-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: clamp(20px, 2.6vw, 36px);
+  grid-template-areas:
+    "img-main img-side"
+    "text     themes"
+    "quote    quote";
+}
+
+.hankar h2 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hankar-image {
+  margin: 0;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-lg);
+}
+
+.hankar-image--main { grid-area: img-main; }
+.hankar-image:not(.hankar-image--main) { grid-area: img-side; }
+
+.hankar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04);
+  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hankar-image:hover img { transform: scale(1.03); }
+
+.hankar-image figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 18px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: linear-gradient(180deg, transparent 0%, rgba(22, 20, 18, 0.86) 100%);
+  color: var(--paper);
+}
+
+.hankar-image .card-kicker {
+  color: var(--accent-soft);
+  margin: 0 0 4px;
+}
+
+.hankar-image figcaption span:last-child {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  max-width: 46ch;
+}
+
+.hankar-text {
+  grid-area: text;
+  padding-top: 4px;
+}
+
+.hankar-text p {
+  font-size: 1.04rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+.hankar-text .paragraph-lead {
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+
+.hankar-text em { font-style: italic; }
+
+.hankar-themes {
+  grid-area: themes;
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.hankar-themes .card-kicker {
+  margin-bottom: 18px;
+}
+
+.hankar-themes ul {
+  display: grid;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.hankar-themes li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.hankar-themes li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hankar-themes li::before {
+  content: "·";
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--mono);
+}
+
+.hankar-quote {
+  grid-area: quote;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hankar-quote::before {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -20%;
+  width: 280px;
+  height: 280px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(196, 66, 26, 0.32), transparent 70%);
+  pointer-events: none;
+}
+
+.hankar-quote blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--paper);
+  margin: 0 auto;
+  max-width: 28ch;
+}
+
+.hankar-quote .quote-mark { color: var(--gold); }
+
+.hankar-quote .manifesto-attr {
+  color: rgba(243, 238, 227, 0.7);
+  margin-top: 18px;
+}
+
+@media (max-width: 1024px) {
+  .hankar-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "img-main"
+      "img-side"
+      "text"
+      "themes"
+      "quote";
+  }
+
+  .hankar-image {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* =========================================================
+   DELVAUX (§ 04)
    ========================================================= */
 .delvaux-grid {
   display: grid;
