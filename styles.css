@@ -1077,6 +1077,10 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
 
 .oeuvre--tall { grid-row: span 3; }
 .oeuvre--wide { grid-column: span 4; }
+.oeuvre--banner {
+  grid-column: span 6;
+  grid-row: span 2;
+}
 
 .oeuvre figcaption {
   position: absolute;
@@ -1163,6 +1167,100 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* =========================================================
+   AUJOURD'HUI / SPOTLIGHT (§ 07)
+   ========================================================= */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(20px, 2.6vw, 36px);
+  align-items: stretch;
+}
+
+.spotlight-figure {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 5 / 4;
+  position: relative;
+}
+
+.spotlight-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.spotlight-figure:hover img { transform: scale(1.04); }
+
+.spotlight-card {
+  padding: clamp(28px, 4vw, 52px);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: -25% -25% auto auto;
+  width: 280px;
+  height: 280px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(232, 214, 53, 0.34), transparent 70%);
+  pointer-events: none;
+}
+
+.spotlight-card .card-kicker {
+  color: var(--accent-soft);
+  margin: 0;
+}
+
+.spotlight-card h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--paper);
+}
+
+.spotlight-meta {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(243, 238, 227, 0.7);
+  margin: 0 0 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(243, 238, 227, 0.18);
+}
+
+.spotlight-text {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(243, 238, 227, 0.92);
+  margin: 0;
+  max-width: 36ch;
+}
+
+@media (max-width: 1024px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================================================
@@ -1312,6 +1410,7 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
   }
 
   .oeuvre--wide { grid-column: span 4; }
+  .oeuvre--banner { grid-column: span 4; }
 }
 
 @media (max-width: 720px) {
@@ -1350,7 +1449,8 @@ ul, ol { list-style: none; padding: 0; margin: 0; }
 
   .oeuvre,
   .oeuvre--tall,
-  .oeuvre--wide {
+  .oeuvre--wide,
+  .oeuvre--banner {
     grid-column: span 2;
     grid-row: span 2;
   }
